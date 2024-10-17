@@ -53,10 +53,15 @@ public class Alien extends Sprite {
     /**
      * Mueve horizontalmente el alien en la dirección indicada
      * @param direction posición hacia la izquierda o derecha hacia la que se mueve el alien
-     * */
+     * Recibirá solo variable 1 o -1, que indica la posición que mueva. (direction=1 izquierda, direction=-1 derecha)*/
     public void act(int direction) {
 
-        this.x = direction+Commons.ALIEN_WIDTH;
+        if (direction == 1){
+            this.x = this.x + Commons.ALIEN_WIDTH;
+        } else if (direction == -1) {
+            this.x = this.x - Commons.ALIEN_WIDTH;
+        }
+
     }
 
     /**
