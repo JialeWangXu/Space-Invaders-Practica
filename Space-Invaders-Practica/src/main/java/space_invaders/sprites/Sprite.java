@@ -108,4 +108,12 @@ public class Sprite {
 
         return this.dying;
     }
+
+    public int getDx() {
+        return dx;
+    }
+
+    public void setDx(int dx) {
+        this.dx = dx;
+    }
 }
