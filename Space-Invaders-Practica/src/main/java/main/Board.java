@@ -82,7 +82,7 @@ public class Board extends JPanel {
      * Incializa la partida.
      * Crea las filas de alienígenas, asignando a cada uno su posición inicial
      * */
-    private void gameInit() {
+    public void gameInit() {
 
         this.aliens = new ArrayList<>();
 
@@ -510,4 +510,6 @@ public class Board extends JPanel {
     public void setTimer(Timer timer) {
         this.timer = timer;
     }
+
+
 }

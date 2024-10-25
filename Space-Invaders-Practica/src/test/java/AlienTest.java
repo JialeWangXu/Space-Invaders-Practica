@@ -13,7 +13,7 @@ public class AlienTest {
 
     @BeforeEach
     public void setUp(){
-        alien = new Alien(-1,100);
+        alien = new Alien(150,100);
     }
 
     @Test
@@ -22,6 +22,7 @@ public class AlienTest {
         assertAll("Pruebas de valor límite del método initAlien: ",
                 () -> {
                     //FALSE
+                    alien.setX(-1);
                     assertEquals(0,alien.getX(),"Caso 1: \nsalida esperada de X: 0 \nsalida final: " + alien.getX());
                 },
                 () -> {
@@ -88,19 +89,13 @@ public class AlienTest {
 
     }
 
-    @Test
-    public void actTest(){
-         System.out.println("Antes de valor especial: " + alien.getX());
-         alien.act(2);
-        System.out.println("\nDespués de valor especial: " + alien.getX());
 
-    }
 
     @Test
     public void initBomb(){
         assertAll("Pruebas de valor límite del método initAlien: ",
                 () -> {
-
+                    alien.setX(-1);
                     assertEquals(0,alien.getX(),"Caso 1: \nsalida esperada de X: 0 \nsalida final: " + alien.getX());
                 },
                 () -> {
@@ -169,6 +164,28 @@ public class AlienTest {
                     assertEquals(351,alien.getY(), "\nCaso 14: \nsalida esperado de Y: 350 \nsalida final: " + alien.getY());
                 }
         );
+    }
+
+    @Test
+    public void act(){
+
+
+        assertAll("Pruebas de clase de equivalencia del método act: ",
+                () -> {
+
+
+                    alien.act(1);
+                    assertEquals(162,alien.getX(),"\nCaso 1 \nsalida esperada de X: 162 \nsalida final: " + alien.getX());
+                    System.out.println("\nCaso 1 \nsalida esperada de X: 162 \nsalida final: " + alien.getX());
+                },() -> {
+
+
+                    alien.act(-1);
+                    assertEquals(138,alien.getX(),"\nCaso 2 \nsalida esperada de X: 138 \nsalida final: " + alien.getX());
+                    System.out.println("\nCaso 2 \nsalida esperada de X: 138 \nsalida final: " + alien.getX());
+                }
+        );
+
     }
 
 }
