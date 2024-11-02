@@ -18,6 +18,7 @@ public class Alien extends Sprite {
         initAlien(x, y);
     }
     /**
+     * TODO: TEST
      * Inicializa un nuevo alien y le asigna la imagen correspondiente en la interfaz
      * @param x coordenada X de la posición del nuevo alien
      * @param y coordenada Y de la posición del nuevo alien
@@ -51,6 +52,7 @@ public class Alien extends Sprite {
     }
 
     /**
+     * TODO: TEST
      * Mueve horizontalmente el alien en la dirección indicada
      * @param direction posición hacia la izquierda o derecha hacia la que se mueve el alien
      * Recibirá solo variable 1 o -1, que indica la posición que mueva. (direction=1 izquierda, direction=-1 derecha)*/
@@ -84,6 +86,7 @@ public class Alien extends Sprite {
         }
 
         /**
+         * TODO: TEST
          * Inicializa el nuevo objeto bomba y le asigna las coordenadas indicadas y la imagen correspondiente en la interfaz
          * @param x coordenada X de la posición de la nueva bomba
          * @param y coordenada Y de la posición de la nueva bomba
