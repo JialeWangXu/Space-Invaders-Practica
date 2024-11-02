@@ -158,7 +158,7 @@ public class BoardTest {
         board.gameInit();
         assertAll("Pruebas de clase de equivalencia del método update_aliens: ",
                 () -> {
-                    board.setDirection(-1);
+                    board.setDirection(1);
                     board.getAliens().get(8).setX(330);
                     board.getAliens().get(8).setY(5);
                     board.update_aliens();
@@ -167,7 +167,7 @@ public class BoardTest {
 
                 }, () -> {
 
-                    board.setDirection(1);
+                    board.setDirection(-1);
                     board.getAliens().get(9).setX(2);
                     board.getAliens().get(9).setY(5);
                     board.update_aliens();
