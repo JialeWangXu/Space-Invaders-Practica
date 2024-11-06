@@ -227,20 +227,20 @@ public class BoardTest {
 
                 }, () -> {
                     board.getPlayer().setDying(true);
-                    board.getAliens().get(2).getBomb().setY(100);
-                    board.getAliens().get(2).getBomb().setX(200);
+                    board.getAliens().get(2).getBomb().setY(200);
+                    board.getAliens().get(2).getBomb().setX(100);
                     board.update_bomb();
-                    assertTrue(board.getAliens().get(2).getBomb().getY() == 101,
-                            "Caso 3: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(2).getBomb().getY() == 101));
-                    System.out.println("Caso 3: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(2).getBomb().getY() == 101));
+                    assertTrue(board.getAliens().get(2).getBomb().getY() == 201,
+                            "Caso 3: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(2).getBomb().getY()));
+                    System.out.println("Caso 3: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(2).getBomb().getY()));
 
                 }, () -> {
-                    board.getAliens().get(3).getBomb().setY(100);
-                    board.getAliens().get(3).getBomb().setX(280);
+                    board.getAliens().get(3).getBomb().setY(280);
+                    board.getAliens().get(3).getBomb().setX(100);
                     board.update_bomb();
-                    assertTrue(board.getAliens().get(3).getBomb().getY() == 101,
-                            "Caso 4: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(3).getBomb().getY() == 101));
-                    System.out.println("Caso 4: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(3).getBomb().getY() == 101));
+                    assertTrue(board.getAliens().get(3).getBomb().getY() == 281,
+                            "Caso 4: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(3).getBomb().getY()));
+                    System.out.println("Caso 4: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(3).getBomb().getY()));
 
                 }
 
