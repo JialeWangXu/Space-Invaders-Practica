@@ -3,6 +3,9 @@ import main.Board;
 import main.Commons;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSources;
 import space_invaders.sprites.Alien;
 import space_invaders.sprites.Player;
 import space_invaders.sprites.Shot;
@@ -13,8 +16,7 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class BoardTest {
@@ -26,30 +28,22 @@ public class BoardTest {
     @Test
     public void gameInit(){
         board.gameInit();
-        assertAll("Pruebas de valor límite del método initAlien: ",
+        assertAll("Pruebas de tabla de decisión del método initAlien: ",
                 () -> {
-                    assertEquals(150,board.getAliens().get(0).getX(),"Caso 1: \nsalida esperada de X: 150 \nsalida final: " + board.getAliens().get(0).getX());
-                    assertEquals(5,board.getAliens().get(0).getY(),"Caso 1: \nsalida esperada de Y: 5 \nsalida final: " + board.getAliens().get(0).getY());
+
+                    assertFalse(board.getAliens().get(0).getX() == 150 && board.getAliens().get(0).getY() == 5 && board.getAliens().size() != 24, "caso 1 : \nsalida esperada de X: 150 " +
+                            "\nsalida esperada de Y: 5 \nsalida esperada de numero de alien = distinto que 24" );
+
                 },() -> {
+                    assertFalse(board.getAliens().get(0).getX() != 150 && board.getAliens().get(0).getY() != 5 && board.getAliens().size() == 24, "caso 2 : \nsalida esperada de X: distinto que 150 " +
+                            "\nsalida esperada de Y: distinto de 5 \nsalida esperada de numero de alien = 24" );
 
 
-                    assertEquals(168,board.getAliens().get(1).getX(),"Caso 2: \nsalida esperada de X: 168 \nsalida final: " + board.getAliens().get(1).getX());
-                    assertEquals(5,board.getAliens().get(1).getY(),"Caso 2: \nsalida esperada de Y: 5 \nsalida final: " + board.getAliens().get(1).getY());
                 },() -> {
+                    assertTrue(board.getAliens().get(0).getX() == 150 && board.getAliens().get(0).getY() == 5 && board.getAliens().size() == 24, "caso 3 : \nsalida esperada de X: 150 " +
+                            "\nsalida esperada de Y: 5 \nsalida esperada de numero de alien = 24" );
+                    System.out.println(board.getAliens().get(0).getX()+", " +board.getAliens().get(0).getY() + ", " + board.getAliens().size());
 
-
-                    assertEquals(186,board.getAliens().get(2).getX(),"Caso 3: \nsalida esperada de X: 186 \nsalida final: " + board.getAliens().get(2).getX());
-                    assertEquals(5,board.getAliens().get(2).getY(),"Caso 3: \nsalida esperada de Y: 5 \nsalida final: " + board.getAliens().get(2).getY());
-                },() -> {
-
-
-                    assertEquals(222,board.getAliens().get(22).getX(),"Caso 4: \nsalida esperada de X: 222 \nsalida final: " + board.getAliens().get(22).getX());
-                    assertEquals(59,board.getAliens().get(22).getY(),"Caso 4: \nsalida esperada de Y: 59 \nsalida final: " + board.getAliens().get(22).getY());
-                },() -> {
-
-
-                    assertEquals(240,board.getAliens().get(23).getX(),"Caso 5: \nsalida esperada de X: 240 \nsalida final: " + board.getAliens().get(23).getX());
-                    assertEquals(59,board.getAliens().get(23).getY(),"Caso 5: \nsalida esperada de Y: 59 \nsalida final: " + board.getAliens().get(23).getY());
                 }
         );
     }
@@ -152,6 +146,8 @@ public class BoardTest {
 
     }
 
+
+
     @Test
     public void update_aliens(){
 
@@ -211,34 +207,43 @@ public class BoardTest {
     @Test
     public void update_bomb(){
         board.gameInit();
+        board.getPlayer().setX(180);
+        board.getPlayer().setY(280);
         assertAll("Pruebas de clase de equivalencia del método update_bomb: ",
                 () -> {
-
-                    board.getAliens().get(0).getBomb().setY(285);
+                    board.getAliens().get(0).getBomb().setX(100);
+                    board.getAliens().get(0).getBomb().setY(290);
                     board.update_bomb();
-                    assertEquals(true, board.getAliens().get(0).getBomb().isDestroyed(), "Caso 1: \nsalida esperada : true \nsalida final: " + board.getAliens().get(0).getBomb().isDestroyed());
-                    System.out.println("Caso 1: \nsalida esperada : true \nsalida final: " + board.getAliens().get(0).getBomb().isDestroyed());
-
-                }, () -> {
-                    board.getShot().setX(150);
-                    board.getShot().setY(35);
-                    board.getAliens().get(1).getBomb().setY(30);
-                    board.getAliens().get(1).getBomb().setX(150);
-                    board.update_bomb();
-                    assertEquals(true, board.getAliens().get(1).getBomb().isDestroyed(), "Caso 2: \nsalida esperada : true \nsalida final: " + board.getAliens().get(1).getBomb().isDestroyed());
-                    System.out.println("Caso 2: \nsalida esperada : true \nsalida final: " + board.getAliens().get(1).getBomb().isDestroyed());
+                    assertTrue(board.getAliens().get(0).getBomb().isDestroyed(), "Caso 1: \nsalida esperada : true \nsalida final: " + board.getAliens().get(0).getBomb().isDestroyed());
+                    System.out.println("Caso 1: destruir bomba \nsalida esperada : true \nsalida final: " + board.getAliens().get(0).getBomb().isDestroyed());
 
                 }, () -> {
 
-                    board.getPlayer().setX(270);
-                    board.getPlayer().setY(280);
-                    board.getAliens().get(2).getBomb().setY(280);
-                    board.getAliens().get(2).getBomb().setX(270);
+                    board.getAliens().get(1).getBomb().setX(180);
+                    board.getAliens().get(1).getBomb().setY(280);
                     board.update_bomb();
-                    assertEquals(true, board.getPlayer().isDying(), "Caso 3: \nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
-                    System.out.println("Caso 3: \nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
+                    assertTrue(board.getPlayer().isDying(), "Caso 2: \nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
+                    System.out.println("Caso 2: player died\nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
+
+                }, () -> {
+                    board.getPlayer().setDying(true);
+                    board.getAliens().get(2).getBomb().setY(100);
+                    board.getAliens().get(2).getBomb().setX(200);
+                    board.update_bomb();
+                    assertTrue(board.getAliens().get(2).getBomb().getY() == 101,
+                            "Caso 3: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(2).getBomb().getY() == 101));
+                    System.out.println("Caso 3: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(2).getBomb().getY() == 101));
+
+                }, () -> {
+                    board.getAliens().get(3).getBomb().setY(100);
+                    board.getAliens().get(3).getBomb().setX(280);
+                    board.update_bomb();
+                    assertTrue(board.getAliens().get(3).getBomb().getY() == 101,
+                            "Caso 4: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(3).getBomb().getY() == 101));
+                    System.out.println("Caso 4: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(3).getBomb().getY() == 101));
 
                 }
+
 
 
 
@@ -247,5 +252,6 @@ public class BoardTest {
 
 
     }
+
 
     }
