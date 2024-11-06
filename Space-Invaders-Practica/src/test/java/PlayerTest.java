@@ -6,8 +6,7 @@ import space_invaders.sprites.Sprite;
 
 import java.awt.event.KeyEvent;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTest {
 
@@ -122,4 +121,18 @@ public class PlayerTest {
 
 
     }
+
+    @Test
+    public void initPlayer() {
+
+        player.initPlayer();
+        assertAll("Pruebas de clase de equivalencia del método initPlayer: ",
+                () -> {
+                    assertTrue(player.getX()==179&&player.getY()==280,"\nCaso : \nsalida esperada de X: 179 Y:280 \nsalida final: " + player.getX()+"  "+ player.getY());
+                    System.out.println("\nCaso : \nsalida esperada de X: 179 Y:280 \nsalida final: " + player.getX()+"  "+ player.getY());
+                }
+
+        );
+    }
+
 }

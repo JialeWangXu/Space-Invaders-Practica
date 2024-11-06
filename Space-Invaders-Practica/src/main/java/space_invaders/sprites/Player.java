@@ -16,7 +16,7 @@ public class Player extends Sprite {
     /**
      * Crea un nuevo jugador, le asigna su imagen en la interfaz y lo ubica en el centro de la pantalla
      * */
-    private void initPlayer() {
+    public void initPlayer() {
 
         var playerImg = "src/main/resources/images/player.png";
         var ii = new ImageIcon(playerImg);
