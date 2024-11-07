@@ -16,7 +16,7 @@ public class Player extends Sprite {
     /**
      * Crea un nuevo jugador, le asigna su imagen en la interfaz y lo ubica en el centro de la pantalla
      * */
-    private void initPlayer() {
+    public void initPlayer() {
 
         var playerImg = "src/main/resources/images/player.png";
         var ii = new ImageIcon(playerImg);
@@ -32,6 +32,7 @@ public class Player extends Sprite {
     }
 
     /**
+     * TODO: TEST
      * Mueve la posición del jugador a la izquierda o a la derecha.
      * Si el jugador ha alcanzado el borde de la pantalla y se intenta mover fuera de la pantalla, lo mantendrá quieto en el borde.
      * */
@@ -50,6 +51,7 @@ public class Player extends Sprite {
         }
     }
     /**
+     * TODO: TEST
      * Comprueba qué tecla está pulsada y:
      * - Si se pulsa la tecla flecha a la izquierda, guarda el movimiento hacia la izquierda
      * - Si se pulsa la tecla flecha a la derecha, guarda el movimiento hacia la derecha
@@ -71,6 +73,7 @@ public class Player extends Sprite {
         }
     }
     /**
+     * TODO: TEST
      * Comprueba si la tecla e ya no está pulsada:
      * - Si se suelta la tecla flecha a la izquierda, reinicia el desplazamiento de la izquierda a 0
      * - Si se pulsa la tecla flecha a la derecha, reinicia el desplazamiento de la derecha a 0
