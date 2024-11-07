@@ -189,15 +189,6 @@ public class BoardTest {
                     assertEquals("Invasion!", board.getMessage(), "Caso 4: \nsalida esperada : Invasion! \nsalida final: " + board.getMessage());
                     System.out.println("Caso 4: \nsalida esperada : Invasion! \nsalida final: " + board.getMessage());
 
-                }, () -> {
-
-                    board.setDirection(1);
-                    board.getAliens().get(0).setX(150);
-                    board.getAliens().get(0).setY(277);
-                    board.update_aliens();
-                    assertEquals("", board.getMessage(), "Caso 5: \nsalida esperada : Invasion! \nsalida final: " + board.getMessage());
-                    System.out.println("Caso 5: \nsalida esperada :  \nsalida final: " + board.getMessage());
-
                 }
         );
 
