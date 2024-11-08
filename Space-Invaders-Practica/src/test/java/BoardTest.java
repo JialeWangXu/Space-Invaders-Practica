@@ -171,7 +171,6 @@ public class BoardTest {
                     System.out.println("Caso 2: \nsalida esperada : 20 \nsalida final: " + board.getAliens().get(9).getY());
 
                 }, () -> {
-
                     board.setDirection(1);
                     board.getAliens().get(0).setX(150);
                     board.getAliens().get(0).setY(5);
@@ -180,7 +179,6 @@ public class BoardTest {
                     System.out.println("Caso 3: \nsalida esperada : 5 \nsalida final: " + board.getAliens().get(0).getY());
 
                 }, () -> {
-
 
                     board.setDirection(1);
                     board.getAliens().get(1).setX(150);
@@ -210,16 +208,18 @@ public class BoardTest {
 
                 }, () -> {
 
-                    board.getAliens().get(1).getBomb().setX(180);
-                    board.getAliens().get(1).getBomb().setY(280);
+                    board.getAliens().get(6).getBomb().setX(181);
+                    board.getAliens().get(6).getBomb().setY(281);
+                    board.getAliens().get(6).getBomb().setDestroyed(false);
                     board.update_bomb();
+
                     assertTrue(board.getPlayer().isDying(), "Caso 2: \nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
                     System.out.println("Caso 2: player died\nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
 
                 }, () -> {
-                    board.getPlayer().setDying(true);
                     board.getAliens().get(2).getBomb().setY(200);
                     board.getAliens().get(2).getBomb().setX(100);
+                    board.getAliens().get(2).getBomb().setDestroyed(false);
                     board.update_bomb();
                     assertTrue(board.getAliens().get(2).getBomb().getY() == 201,
                             "Caso 3: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(2).getBomb().getY()));
@@ -228,6 +228,7 @@ public class BoardTest {
                 }, () -> {
                     board.getAliens().get(3).getBomb().setY(280);
                     board.getAliens().get(3).getBomb().setX(100);
+                    board.getAliens().get(3).getBomb().setDestroyed(false);
                     board.update_bomb();
                     assertTrue(board.getAliens().get(3).getBomb().getY() == 281,
                             "Caso 4: bomba Y +1 \nsalida esperada : true \nsalida final: " + (board.getAliens().get(3).getBomb().getY()));
