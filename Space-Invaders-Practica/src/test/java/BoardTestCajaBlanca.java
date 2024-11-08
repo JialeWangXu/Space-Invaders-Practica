@@ -2,8 +2,7 @@ import main.Board;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTestCajaBlanca {
 
@@ -65,6 +64,31 @@ public class BoardTestCajaBlanca {
             );
 
 
+        }
+
+        @Test
+        public void update_bomb_test(){
+            board.gameInit();
+            board.getPlayer().setX(180);
+            board.getPlayer().setY(280);
+            assertAll("Test de caja blanca del método update_bomb: ",
+                    () -> {
+                        board.getAliens().get(0).getBomb().setDestroyed(true);
+                        board.update_bomb();
+                        assertTrue(board.getAliens().get(0).getBomb().isDestroyed(), "Caso 1: \nsalida esperada : true \nsalida final: " + board.getAliens().get(0).getBomb().isDestroyed());
+                        System.out.println("Caso 1: destruir bomba \nsalida esperada : true \nsalida final: " + board.getAliens().get(0).getBomb().isDestroyed());
+                    },() -> {
+
+                        board.getAliens().get(6).getBomb().setX(180);
+                        board.getAliens().get(6).getBomb().setY(280);
+                        board.getAliens().get(6).getBomb().setDestroyed(false);
+                        board.update_bomb();
+
+                        assertTrue(board.getPlayer().isDying(), "Caso 2: \nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
+                        System.out.println("Caso 2: player died\nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
+
+                    }
+            );
         }
 
 

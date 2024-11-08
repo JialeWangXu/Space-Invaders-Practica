@@ -202,14 +202,15 @@ public class BoardTest {
                 () -> {
                     board.getAliens().get(0).getBomb().setX(100);
                     board.getAliens().get(0).getBomb().setY(290);
+                    board.getAliens().get(0).getBomb().setDestroyed(false);
                     board.update_bomb();
                     assertTrue(board.getAliens().get(0).getBomb().isDestroyed(), "Caso 1: \nsalida esperada : true \nsalida final: " + board.getAliens().get(0).getBomb().isDestroyed());
                     System.out.println("Caso 1: destruir bomba \nsalida esperada : true \nsalida final: " + board.getAliens().get(0).getBomb().isDestroyed());
 
                 }, () -> {
 
-                    board.getAliens().get(6).getBomb().setX(181);
-                    board.getAliens().get(6).getBomb().setY(281);
+                    board.getAliens().get(6).getBomb().setX(180);
+                    board.getAliens().get(6).getBomb().setY(280);
                     board.getAliens().get(6).getBomb().setDestroyed(false);
                     board.update_bomb();
 
