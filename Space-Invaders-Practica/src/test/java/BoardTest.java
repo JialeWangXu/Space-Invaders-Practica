@@ -31,18 +31,35 @@ public class BoardTest {
         assertAll("Pruebas de tabla de decisión del método initAlien: ",
                 () -> {
 
-                    assertFalse(board.getAliens().get(0).getX() == 150 && board.getAliens().get(0).getY() == 5 && board.getAliens().size() != 24, "caso 1 : \nsalida esperada de X: 150 " +
-                            "\nsalida esperada de Y: 5 \nsalida esperada de numero de alien = distinto que 24" );
+                    assertFalse(board.getAliens().get(0).getX() == 150 && board.getAliens().get(0).getY() == 5 && board.getAliens().size() != 24,
+                            "caso 1 : \nsalida esperada de X: 150,  salida final de X: "+ board.getAliens().get(0).getX()
+                            +"\nsalida esperada de Y: 5,  salida final de Y:"+ board.getAliens().get(0).getY()
+                            +"\nsalida esperada de numero de alien = distinto que 24,  salida final de numero de alien: " + board.getAliens().size());
+
+                    System.out.println("caso 1 : \nsalida esperada de X: 150,  salida final de X: "+ board.getAliens().get(0).getX()
+                            +"\nsalida esperada de Y: 5,  salida final de Y:"+ board.getAliens().get(0).getY()
+                            +"\nsalida esperada de numero de alien = distinto que 24,  salida final de numero de alien: " + board.getAliens().size());
 
                 },() -> {
-                    assertFalse(board.getAliens().get(0).getX() != 150 && board.getAliens().get(0).getY() != 5 && board.getAliens().size() == 24, "caso 2 : \nsalida esperada de X: distinto que 150 " +
-                            "\nsalida esperada de Y: distinto de 5 \nsalida esperada de numero de alien = 24" );
+                    assertFalse(board.getAliens().get(0).getX() != 150 && board.getAliens().get(0).getY() != 5 && board.getAliens().size() == 24,
+                            "caso 2 : \nsalida esperada de X: distinto que 150,  salida final de X: "+ board.getAliens().get(0).getX()
+                                    +"\nsalida esperada de Y: distinto que 5,  salida final de Y:"+ board.getAliens().get(0).getY()
+                                    +"\nsalida esperada de numero de alien = 24,  salida final de numero de alien: " + board.getAliens().size());
+                    System.out.println("caso 2 : \nsalida esperada de X: distinto que 150,  salida final de X: "+ board.getAliens().get(0).getX()
+                            +"\nsalida esperada de Y: distinto que  5,  salida final de Y:"+ board.getAliens().get(0).getY()
+                            +"\nsalida esperada de numero de alien = distinto que 24,  salida final de numero de alien: " + board.getAliens().size());
 
 
                 },() -> {
-                    assertTrue(board.getAliens().get(0).getX() == 150 && board.getAliens().get(0).getY() == 5 && board.getAliens().size() == 24, "caso 3 : \nsalida esperada de X: 150 " +
-                            "\nsalida esperada de Y: 5 \nsalida esperada de numero de alien = 24" );
-                    System.out.println(board.getAliens().get(0).getX()+", " +board.getAliens().get(0).getY() + ", " + board.getAliens().size());
+                    assertTrue(board.getAliens().get(0).getX() == 150 && board.getAliens().get(0).getY() == 5 && board.getAliens().size() == 24,
+                            "caso 3 : \nsalida esperada de X: 150,  salida final de X: "+ board.getAliens().get(0).getX()
+                                    +"\nsalida esperada de Y: 5,  salida final de Y:"+ board.getAliens().get(0).getY()
+                                    +"\nsalida esperada de numero de alien = 24,  salida final de numero de alien: " + board.getAliens().size());
+
+                    System.out.println("caso 1 : \nsalida esperada de X: 150,  salida final de X: "+ board.getAliens().get(0).getX()
+                            +"\nsalida esperada de Y: 5,  salida final de Y:"+ board.getAliens().get(0).getY()
+                            +"\nsalida esperada de numero de alien = distinto que 24,  salida final de numero de alien: " + board.getAliens().size());
+
 
                 }
         );
