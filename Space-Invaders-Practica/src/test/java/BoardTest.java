@@ -91,73 +91,82 @@ public class BoardTest {
     @Test
     public void update_shots(){
 
-
-
         board.gameInit();
+        for (int i = 1; i < board.getAliens().size(); i++) {
+            board.getAliens().get(i).setDying(true);
+            board.setDeaths(23);
+        }
+        board.getAliens().get(0).setX(150);
+        board.getAliens().get(0).setY(5);
 
-        assertAll("Pruebas de clase de equivalencia del método update_shots: ",
+        assertAll("Pruebas de tabla de decisión del método update_shots: ",
                 () -> {
-                    int x=board.getAliens().get(0).getX();
-                    int y=board.getAliens().get(0).getY();
                     Shot shot = new Shot();
-                    shot.setX(x-20);
-                    shot.setY(y);
+                    shot.setX(140);
+                    shot.setY(5);
                     board.setShot(shot);
                     board.update_shots();
-                    assertEquals(0, board.getDeaths(), "Caso 1: \nsalida esperada : 0 \nsalida final: " + board.getDeaths());
-                    System.out.println("Caso 1: \nsalida esperada : 0 \nsalida final: " + board.getDeaths());
+
+                    assertEquals(1, board.getShot().getY(),
+                            "Caso 1, Shot_Y - 4: \nsalida esperada: Y == 1   salida código: Y == " + board.getShot().getY());
+
+                    System.out.println("Caso 1, Shot_Y - 4: \nsalida esperada: Y == 1   salida código: Y == " + board.getShot().getY());
 
                 },
-                ()->{
-                    int x=board.getAliens().get(0).getX();
-                    int y=board.getAliens().get(0).getY();
+                () -> {
                     Shot shot = new Shot();
-                    shot.setX(x+ Commons.ALIEN_WIDTH+20);
-                    shot.setY(y);
+                    shot.setX(165);
+                    shot.setY(5);
                     board.setShot(shot);
-                    board.setDeaths(0);
                     board.update_shots();
-                    assertEquals(0, board.getDeaths(), "Caso 2: \nsalida esperada : 0 \nsalida final: " + board.getDeaths());
-                    System.out.println("Caso 2: \nsalida esperada : 0 \nsalida final: " + board.getDeaths());
+
+                    assertEquals(1, board.getShot().getY(),
+                            "\nCaso 2, Shot_Y - 4: \nsalida esperada: Y == 1   salida código: Y == " + board.getShot().getY());
+
+                    System.out.println("\nCaso 2, Shot_Y - 4: \nsalida esperada: Y == 1   salida código: Y == " + board.getShot().getY());
+
                 },
-                ()->{
-                    int x=board.getAliens().get(0).getX();
-                    int y=board.getAliens().get(0).getY();
+                () -> {
                     Shot shot = new Shot();
-                    shot.setX(x);
-                    shot.setY(y-20);
+                    shot.setX(150);
+                    shot.setY(50);
                     board.setShot(shot);
-                    board.setDeaths(0);
                     board.update_shots();
-                    assertEquals(0, board.getDeaths(), "Caso 3: \nsalida esperada : 0 \nsalida final: " + board.getDeaths());
-                    System.out.println("Caso 3: \nsalida esperada : 0 \nsalida final: " + board.getDeaths());
+
+                    assertEquals(46, board.getShot().getY(),
+                            "\nCaso 3, Shot_Y - 4: \nsalida esperada: Y == 46   salida código: Y == " + board.getShot().getY());
+                    System.out.println("\nCaso 3, Shot_Y - 4: \nsalida esperada: Y == 46   salida código: Y == " + board.getShot().getY());
+
                 },
-                ()->{
-                    int x=board.getAliens().get(0).getX();
-                    int y=board.getAliens().get(0).getY();
+                () -> {
                     Shot shot = new Shot();
-                    shot.setX(x);
-                    shot.setY(y+ Commons.ALIEN_HEIGHT+20);
+                    shot.setX(150);
+                    shot.setY(5);
                     board.setShot(shot);
-                    board.setDeaths(0);
                     board.update_shots();
-                    assertEquals(0, board.getDeaths(), "Caso 4: \nsalida esperada : 0 \nsalida final: " + board.getDeaths());
-                    System.out.println("Caso 4: \nsalida esperada : 0 \nsalida final: " + board.getDeaths());
+                    assertTrue(board.getDeaths() == 24 && board.getAliens().getFirst().isDying(),
+                            "\nCaso 4, Destruir disparo por chocar con alienigeno:" +
+                                    "\nsalida esperada: Death == 24  aliens[0].isDying == true" +
+                                    "\nsalida de código Death == " + board.getDeaths() + " aliens[0].isDying == " + board.getAliens().getFirst().isDying());
+
+                    System.out.println("\nCaso 4, Destruir disparo por chocar con alienigeno:" +
+                                    "\nsalida esperada: Death == 24  aliens[0].isDying == true" +
+                                    "\nsalida de código Death == " + board.getDeaths() + " aliens[0].isDying == " + board.getAliens().getFirst().isDying());
                 },
-                ()->{
-                    int x=board.getAliens().get(0).getX();
-                    int y=board.getAliens().get(0).getY();
+                () -> {
                     Shot shot = new Shot();
-                    shot.setX(x);
-                    shot.setY(y);
+                    shot.setX(150);
+                    shot.setY(-1);
                     board.setShot(shot);
-                    board.setDeaths(0);
                     board.update_shots();
-                    assertEquals(1, board.getDeaths(), "Caso 5: \nsalida esperada : 1 \nsalida final: " + board.getDeaths());
-                    System.out.println("Caso 5: \nsalida esperada : 1 \nsalida final: " + board.getDeaths());
+                    assertFalse(shot.isVisible(), "\nCaso 5, Destruir disparo por chocar con suelo" +
+                            "\nsalida esperada: shot.isVisible == false    salida código: shot.isVisible == " +  shot.isVisible());
+
+                    System.out.println("\nCaso 5, Destruir disparo por chocar con suelo" +
+                            "\nsalida esperada: shot.isVisible == false    salida código: shot.isVisible == " +  shot.isVisible());
+
                 }
         );
-
 
     }
 
