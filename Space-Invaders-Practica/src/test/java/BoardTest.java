@@ -156,7 +156,7 @@ public class BoardTest {
                 () -> {
                     Shot shot = new Shot();
                     shot.setX(150);
-                    shot.setY(-1);
+                    shot.setY(1);
                     board.setShot(shot);
                     board.update_shots();
                     assertFalse(shot.isVisible(), "\nCaso 5, Destruir disparo por chocar con suelo" +
