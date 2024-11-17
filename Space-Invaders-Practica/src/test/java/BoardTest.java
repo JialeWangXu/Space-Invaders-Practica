@@ -66,23 +66,22 @@ public class BoardTest {
 
     @Test
     public void update(){
-
-
         board.setInGame(true);
         System.out.println(board.getDeaths());
         assertAll("Pruebas de clase de equivalencia del método update: ",
                 () -> {
                     board.setDeaths(24);
                     board.update();
-                    assertEquals("Game won!", board.getMessage(), "Caso 1: \nsalida esperada : Game won! \nsalida final: " + board.getMessage());
+                    assertTrue( board.getMessage()=="Game won!" && !board.isInGame(), "Caso 1: \nsalida esperada : Game won! \nsalida final: " + board.getMessage());
                     System.out.println("Caso 1: \nsalida esperada : Game won! \nsalida final: " + board.getMessage());
 
                 },
                 ()->{
+                    board.setInGame(true);
                     board.setDeaths(3);
                     board.update();
-                    assertEquals("", board.getMessage(), "Caso 2: \nsalida esperada :  \nsalida final: " + board.getMessage());
-                    System.out.println("Caso 2: \nsalida esperada :  \nsalida final: " + board.getMessage());
+                    assertTrue( board.isInGame(), "Caso 2: \nsalida esperada : True \nsalida final: " + board.isInGame());
+                    System.out.println("Caso 2: \nsalida esperada :  \nsalida final: " + board.isInGame());
                 }
         );
 
