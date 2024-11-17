@@ -291,7 +291,7 @@ public class Board extends JPanel {
             int y = this.shot.getY();
             y -= 4;
 
-            if (y < 0) {
+                if (y < 0) {
                 this.shot.die();
             } else {
                 this.shot.setY(y);
