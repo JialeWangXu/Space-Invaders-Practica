@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public class Alien extends Sprite {
 
-    private Bomb bomb;
+    public Bomb bomb;
 
     /**
      * Inicializa un nuevo alien
@@ -26,7 +26,7 @@ public class Alien extends Sprite {
      * Por ejemplo, si la coordenada X indicada supera el margen de la pantalla, se asignará a X el valor máximo posible, es decir, el ancho de la pantalla.
      * Si se introduce alguna coordenada negativa, se reemplazará por 0.
      * */
-    private void initAlien(int x, int y) {
+    public void initAlien(int x, int y) {
 
         if (x> Commons.BOARD_WIDTH){
             this.x = Commons.BOARD_WIDTH;
@@ -35,7 +35,7 @@ public class Alien extends Sprite {
         } if (y> Commons.BOARD_HEIGHT){
             this.y = Commons.BOARD_HEIGHT;
         } if (y<0){
-            this.y=0;
+            this.y = 0;
         }
         else
         {
@@ -93,7 +93,7 @@ public class Alien extends Sprite {
          * Si el valor X o Y indiados superan el margen de la pantalla, se les asignará el valor máximo permitido.
          * Si se introduce algún valor negativo, será reemplazado por 0.
          * */
-        private void initBomb(int x, int y) {
+        public void initBomb(int x, int y) {
 
             setDestroyed(true);
 
