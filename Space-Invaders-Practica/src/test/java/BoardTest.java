@@ -31,7 +31,7 @@ public class BoardTest {
 
         assertAll("Pruebas de tabla de decisión del método initAlien: ",
                 () -> {
-                    assertTrue( board.getAliens().size() != 24,
+                    assertFalse( board.getAliens().size() != 24,
                             "caso 1, alienígenas generado erróneamente por insuficiente numero total de alienígenas: " +
                                     "\nsalida esperada de numero de alien = distinto que 24, salida final de numero de alien: " + board.getAliens().size());
 
@@ -39,7 +39,7 @@ public class BoardTest {
                                     "\nsalida esperada de numero de alien = distinto que 24, salida final de numero de alien: " + board.getAliens().size());
 
                 },() -> {
-                    assertTrue(board.getAliens().get(0).getX() != 150 || board.getAliens().get(0).getY() != 5,
+                    assertFalse(board.getAliens().get(0).getX() != 150 || board.getAliens().get(0).getY() != 5,
                             "caso 2, alienígenas generado erróneamente por instanciar en la coordenada errónea: " +
                                     "\nsalida esperada de X: distinto que 150,  salida final de X: "+ board.getAliens().get(0).getX()
                                     +"\nsalida esperada de Y: distinto que 5,  salida final de Y:"+ board.getAliens().get(0).getY());
@@ -53,7 +53,6 @@ public class BoardTest {
                             "caso 3 alienígenas generado correctamente: \nsalida esperada de X: 150,  salida final de X: "+ board.getAliens().get(0).getX()
                                     +"\nsalida esperada de Y: 5,  salida final de Y:"+ board.getAliens().get(0).getY()
                                     +"\nsalida esperada de numero de alien = 24,  salida final de numero de alien: " + board.getAliens().size());
-
                     System.out.println("caso 1 : \nsalida esperada de X: 150,  salida final de X: "+ board.getAliens().get(0).getX()
                             +"\nsalida esperada de Y: 5,  salida final de Y:"+ board.getAliens().get(0).getY()
                             +"\nsalida esperada de numero de alien = distinto que 24,  salida final de numero de alien: " + board.getAliens().size());
