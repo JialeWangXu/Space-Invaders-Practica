@@ -137,6 +137,7 @@ public class BoardTest {
 
                 },
                 () -> {
+                    board.setDeaths(23);
                     Shot shot = new Shot();
                     shot.setX(150);
                     shot.setY(5);

@@ -1,9 +1,9 @@
 package space_invaders.sprites;
 
-import main.Commons;
-
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
+
+import static main.Commons.BOARD_WIDTH;
 
 public class Player extends Sprite {
 
@@ -24,7 +24,7 @@ public class Player extends Sprite {
         width = ii.getImage().getWidth(null);
         setImage(ii.getImage());
 
-        int START_X = 270;
+        int START_X = BOARD_WIDTH/2;
         setX(START_X);
 
         int START_Y = 280;
@@ -35,19 +35,21 @@ public class Player extends Sprite {
      * TODO: TEST
      * Mueve la posición del jugador a la izquierda o a la derecha.
      * Si el jugador ha alcanzado el borde de la pantalla y se intenta mover fuera de la pantalla, lo mantendrá quieto en el borde.
+     *
+     * El 2 y 2*width son bordes que han calculado por profesor, están bien.
      * */
     public void act() {
 
         x += dx;
 
-        if (x >= 2) {
+        if (x <= 2) {
 
             x = 2;
         }
 
-        if (x >= Commons.BOARD_WIDTH - 2 * width) {
+        if (x >= BOARD_WIDTH - 2 * width) {
 
-            x = Commons.BOARD_WIDTH - 2 * width;
+            x = BOARD_WIDTH - 2 * width;
         }
     }
     /**
@@ -64,7 +66,7 @@ public class Player extends Sprite {
 
         if (key == KeyEvent.VK_LEFT) {
 
-            dx = 2;
+            dx = -2;
         }
 
         if (key == KeyEvent.VK_RIGHT) {

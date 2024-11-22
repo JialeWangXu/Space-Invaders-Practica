@@ -28,22 +28,24 @@ public class Alien extends Sprite {
      * */
     public void initAlien(int x, int y) {
 
+        this.x = x;
+        this.y = y;
+
         if (x> Commons.BOARD_WIDTH){
             this.x = Commons.BOARD_WIDTH;
-        } if (x<0){
+        }
+        if (x<0){
             this.x = 0;
-        } if (y> Commons.BOARD_HEIGHT){
+        }
+        if (y> Commons.BOARD_HEIGHT){
             this.y = Commons.BOARD_HEIGHT;
-        } if (y<0){
+        }
+        if (y<0){
             this.y = 0;
         }
-        else
-        {
-            this.x = x;
-            this.y = y;
-        }
 
-        bomb = new Bomb(x, y);
+
+        bomb = new Bomb(this.x, this.y);
 
         var alienImg = "src/main/resources/images/alien.png";
         var ii = new ImageIcon(alienImg);
@@ -58,7 +60,7 @@ public class Alien extends Sprite {
      * Recibirá solo variable 1 o -1, que indica la posición que mueva. (direction=1 izquierda, direction=-1 derecha)*/
     public void act(int direction) {
 
-        this.x = direction+Commons.ALIEN_WIDTH;
+        this.x += Commons.ALIEN_WIDTH*direction;
     }
 
     /**
@@ -96,7 +98,7 @@ public class Alien extends Sprite {
         public void initBomb(int x, int y) {
 
             setDestroyed(true);
-
+            /*
             if (x<= Commons.BOARD_WIDTH && y<= Commons.BOARD_HEIGHT) {
                 this.x += x;
                 this.y += y;
@@ -104,6 +106,22 @@ public class Alien extends Sprite {
             {
                 this.x = Commons.BOARD_WIDTH;
                 this.y = Commons.BOARD_HEIGHT;
+            }*/
+
+            if (x>= Commons.BOARD_WIDTH){
+                this.x = Commons.BOARD_WIDTH;
+            }else if (x<0){
+                this.x = 0;
+            }else{
+                this.x = x;
+            }
+
+            if (y>= Commons.BOARD_HEIGHT){
+                this.y = Commons.BOARD_HEIGHT;
+            }else if (y<0){
+                this.y = 0;
+            }else {
+                this.y = y;
             }
 
             var bombImg = "src/main/resources/images/bomb.png";

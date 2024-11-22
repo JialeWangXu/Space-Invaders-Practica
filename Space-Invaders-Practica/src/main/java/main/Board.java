@@ -96,7 +96,7 @@ public class Board extends JPanel {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 6; j++) {
 
-                var alien = new Alien(Commons.ALIEN_INIT_Y + 18 * j,
+                var alien = new Alien(Commons.ALIEN_INIT_X + 18 * j,
                         Commons.ALIEN_INIT_Y + 18 * i);
                 this.aliens.add(alien);
             }
@@ -241,16 +241,17 @@ public class Board extends JPanel {
      * */
     public void update() {
 
-        if (deaths == Commons.CHANCE) {
+        if (deaths == Commons.NUMBER_OF_ALIENS_TO_DESTROY) {
             inGame = false;
             timer.stop();
             message = "Game won!";
-        }
+        } else {
 
-        this.player.act();
-        update_shots();
-        update_aliens();
-        update_bomb();
+            this.player.act();
+            update_shots();
+            update_aliens();
+            update_bomb();
+        }
     }
     /**
      * TODO: TEST
@@ -282,7 +283,7 @@ public class Board extends JPanel {
                         var ii = new ImageIcon(explImg);
                         alien.setImage(ii.getImage());
                         alien.setDying(true);
-                        deaths--;
+                        deaths++;
                         this.shot.die();
                     }
                 }
@@ -314,9 +315,9 @@ public class Board extends JPanel {
 
             int x = alien.getX();
 
-            if (x <= Commons.BOARD_WIDTH - Commons.BORDER_RIGHT && direction != -1) {
+            if (x >= Commons.BOARD_WIDTH - Commons.BORDER_RIGHT && direction != -1) {
 
-                direction = 0;
+                direction = -1;
 
                 Iterator<Alien> i1 = this.aliens.iterator();
 
@@ -336,7 +337,7 @@ public class Board extends JPanel {
                 while (i2.hasNext()) {
 
                     Alien a = i2.next();
-                    a.setX(a.getY() + Commons.GO_DOWN);
+                    a.setY(a.getY() + Commons.GO_DOWN);
                 }
             }
         }
@@ -402,7 +403,7 @@ public class Board extends JPanel {
 
                     var ii = new ImageIcon(explImg);
                     this.player.setImage(ii.getImage());
-                    this.player.setDying(false);
+                    this.player.setDying(true);
                     bomb.setDestroyed(true);
                 }
             }
@@ -413,7 +414,7 @@ public class Board extends JPanel {
 
                 if (bomb.getY() >= Commons.GROUND - Commons.BOMB_HEIGHT) {
 
-                    bomb.setDestroyed(false);
+                    bomb.setDestroyed(true);
                 }
             }
         }
