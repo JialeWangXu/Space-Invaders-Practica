@@ -17,13 +17,10 @@ public class Shot extends Sprite {
     }
     /**
      * Inicializa un nuevo objeto disparo en las coordenadas indicadas y le asigna la imagen correspondiente en la interfaz
+     * El disparo sale del jugador, y le asigna las coordenadas sumando el valor H_SPACE (6) a la coordenada X,
+     * y restando el valor V_SPACE (1) a la coordenada Y.
      * @param x coordenada X de la posición del nuevo disparo
      * @param y coordenada Y de la posición del nuevo disparo
-     *
-     * Inicializa un nuevo objeto disparo en las coordenadas indicadas y
-     * le asigna la imagen correspondiente en la interfaz El disparo sale del jugador,
-     * y le asigna las coordenadas sumando el valor H_SPACE (6) a la coordenada X,
-     * y restando el valor V_SPACE (1) a la coordenada Y.
      * */
     private void initShot(int x, int y) {
 

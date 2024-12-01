@@ -12,6 +12,14 @@ public class Sprite {
     int y;
     int dx;
 
+    public int getDx() {
+        return dx;
+    }
+
+    public void setDx(int dx) {
+        this.dx = dx;
+    }
+
     public Sprite() {
 
         visible = true;
@@ -107,13 +115,5 @@ public class Sprite {
     public boolean isDying() {
 
         return this.dying;
-    }
-
-    public int getDx() {
-        return dx;
-    }
-
-    public void setDx(int dx) {
-        this.dx = dx;
     }
 }

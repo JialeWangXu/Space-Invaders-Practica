@@ -47,17 +47,17 @@ public class AlienTestCajaBlanca {
     public void initBomb1() {
         assertAll("Pruebas de valor límite del método initBomb: ",
                 () -> {
-                    alien.bomb = alien.new Bomb(358, 351);
+                    alien.setBomb(alien.new Bomb(358, 351));
                     assertTrue(alien.getBomb().getX()==358 && alien.getBomb().getY()==351, "Caso 1: \nsalida esperada : x = 358 y = 351 \nsalida final: x = " + alien.getBomb().getX()+" y = "+alien.getBomb().getY());
                     System.out.println("Caso 1: \nsalida esperada : x = 358 y = 351 \nsalida final: x = " + alien.getBomb().getX()+" y = "+alien.getBomb().getY());
                 },
                 () -> {
-                    alien.bomb = alien.new Bomb(358, 350);
+                    alien.setBomb(alien.new Bomb(358, 350));
                     assertTrue(alien.getBomb().getX()==358 && alien.getBomb().getY()==350, "Caso 1: \nsalida esperada : x = 358 y = 350 \nsalida final: x = " + alien.getBomb().getX()+" y = "+alien.getBomb().getY());
                     System.out.println("Caso 1: \nsalida esperada : x = 358 y = 350 \nsalida final: x = " + alien.getBomb().getX()+" y = "+alien.getBomb().getY());
                 },
                 () -> {
-                    alien.bomb = alien.new Bomb(359, 350);
+                    alien.setBomb(alien.new Bomb(359, 350));
                     assertTrue(alien.getBomb().getX()==359 && alien.getBomb().getY()==350, "Caso 1: \nsalida esperada : x = 359 y = 350 \nsalida final: x = " + alien.getBomb().getX()+" y = "+alien.getBomb().getY());
                     System.out.println("Caso 1: \nsalida esperada : x = 359 y = 350 \nsalida final: x = " + alien.getBomb().getX()+" y = "+alien.getBomb().getY());
                 }

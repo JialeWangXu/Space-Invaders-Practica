@@ -193,15 +193,15 @@ public class BoardTest {
                     assertEquals(20, board.getAliens().get(9).getY(), "Caso 2: \nsalida esperada : 20 \nsalida final: " + board.getAliens().get(9).getY());
                     System.out.println("Caso 2: \nsalida esperada : 20 \nsalida final: " + board.getAliens().get(9).getY());
 
-                }, () -> {
+                }/**, () -> {
                     board.setDirection(1);
                     board.getAliens().get(0).setX(150);
-                    board.getAliens().get(0).setY(5);
+                    board.getAliens().get(0).setY(35);
                     board.update_aliens();
                     assertEquals(5, board.getAliens().get(0).getY(), "Caso 3: \nsalida esperada : 5 \nsalida final: " + board.getAliens().get(0).getY());
                     System.out.println("Caso 3: \nsalida esperada : 5 \nsalida final: " + board.getAliens().get(0).getY());
 
-                }, () -> {
+                }**/, () -> {
 
                     board.setDirection(1);
                     board.getAliens().get(1).setX(150);

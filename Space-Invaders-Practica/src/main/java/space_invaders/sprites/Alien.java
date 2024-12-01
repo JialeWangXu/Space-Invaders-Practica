@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public class Alien extends Sprite {
 
-    public Bomb bomb;
+    private Bomb bomb;
 
     /**
      * Inicializa un nuevo alien
@@ -18,7 +18,6 @@ public class Alien extends Sprite {
         initAlien(x, y);
     }
     /**
-     * TODO: TEST
      * Inicializa un nuevo alien y le asigna la imagen correspondiente en la interfaz
      * @param x coordenada X de la posición del nuevo alien
      * @param y coordenada Y de la posición del nuevo alien
@@ -26,26 +25,24 @@ public class Alien extends Sprite {
      * Por ejemplo, si la coordenada X indicada supera el margen de la pantalla, se asignará a X el valor máximo posible, es decir, el ancho de la pantalla.
      * Si se introduce alguna coordenada negativa, se reemplazará por 0.
      * */
-    public void initAlien(int x, int y) {
-
+    private void initAlien(int x, int y) {
+        //hemos modificado el orden de condición separado la comprobación de los límites de X e Y
         this.x = x;
         this.y = y;
 
         if (x> Commons.BOARD_WIDTH){
             this.x = Commons.BOARD_WIDTH;
-        }
-        if (x<0){
+        } else if (x<0){
             this.x = 0;
         }
+
         if (y> Commons.BOARD_HEIGHT){
             this.y = Commons.BOARD_HEIGHT;
-        }
-        if (y<0){
-            this.y = 0;
+        } else if (y<0){
+            this.y=0;
         }
 
-
-        bomb = new Bomb(this.x, this.y);
+        bomb = new Bomb(x, y);
 
         var alienImg = "src/main/resources/images/alien.png";
         var ii = new ImageIcon(alienImg);
@@ -54,13 +51,13 @@ public class Alien extends Sprite {
     }
 
     /**
-     * TODO: TEST
-     * Mueve horizontalmente el alien en la dirección indicada
+     * Mueve horizontalmente el alien en la dirección indicada.
      * @param direction posición hacia la izquierda o derecha hacia la que se mueve el alien
-     * Recibirá solo variable 1 o -1, que indica la posición que mueva. (direction=1 izquierda, direction=-1 derecha)*/
+     * */
     public void act(int direction) {
 
-        this.x += Commons.ALIEN_WIDTH*direction;
+        this.x += direction;//hemos quitado alien width, y modificado = a +=
+
     }
 
     /**
@@ -70,6 +67,10 @@ public class Alien extends Sprite {
     public Bomb getBomb() {
 
         return bomb;
+    }
+
+    public void setBomb(Bomb bomb) {
+        this.bomb = bomb;
     }
 
     public class Bomb extends Sprite {
@@ -88,40 +89,28 @@ public class Alien extends Sprite {
         }
 
         /**
-         * TODO: TEST
          * Inicializa el nuevo objeto bomba y le asigna las coordenadas indicadas y la imagen correspondiente en la interfaz
          * @param x coordenada X de la posición de la nueva bomba
          * @param y coordenada Y de la posición de la nueva bomba
-         * Si el valor X o Y indiados superan el margen de la pantalla, se les asignará el valor máximo permitido.
+         * Si el valor X o Y indicados superan el margen de la pantalla, se les asignará el valor máximo permitido.
          * Si se introduce algún valor negativo, será reemplazado por 0.
          * */
-        public void initBomb(int x, int y) {
+        private void initBomb(int x, int y) {
 
             setDestroyed(true);
-            /*
-            if (x<= Commons.BOARD_WIDTH && y<= Commons.BOARD_HEIGHT) {
-                this.x += x;
-                this.y += y;
-            } else
-            {
-                this.x = Commons.BOARD_WIDTH;
-                this.y = Commons.BOARD_HEIGHT;
-            }*/
-
+            //hemos modificado el orden de condición separado la comprobación de los límites de X e Y
+            this.x = x;
+            this.y = y;
             if (x>= Commons.BOARD_WIDTH){
                 this.x = Commons.BOARD_WIDTH;
             }else if (x<0){
                 this.x = 0;
-            }else{
-                this.x = x;
             }
 
             if (y>= Commons.BOARD_HEIGHT){
                 this.y = Commons.BOARD_HEIGHT;
             }else if (y<0){
                 this.y = 0;
-            }else {
-                this.y = y;
             }
 
             var bombImg = "src/main/resources/images/bomb.png";

@@ -1,9 +1,9 @@
 package space_invaders.sprites;
 
+import main.Commons;
+
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
-
-import static main.Commons.BOARD_WIDTH;
 
 public class Player extends Sprite {
 
@@ -24,7 +24,7 @@ public class Player extends Sprite {
         width = ii.getImage().getWidth(null);
         setImage(ii.getImage());
 
-        int START_X = BOARD_WIDTH/2;
+        int START_X = 179;// hemos cambiado el valor 270 a 179
         setX(START_X);
 
         int START_Y = 280;
@@ -32,28 +32,25 @@ public class Player extends Sprite {
     }
 
     /**
-     * TODO: TEST
      * Mueve la posición del jugador a la izquierda o a la derecha.
-     * Si el jugador ha alcanzado el borde de la pantalla y se intenta mover fuera de la pantalla, lo mantendrá quieto en el borde.
-     *
-     * El 2 y 2*width son bordes que han calculado por profesor, están bien.
+     * Si el jugador ha alcanzado el borde de la pantalla y se intenta mover fuera de la pantalla,
+     * lo mantendrá quieto en el borde.
      * */
     public void act() {
 
         x += dx;
 
-        if (x <= 2) {
+        if (x <= 2) {//hemos cambiado la condición de >= a <=
 
             x = 2;
         }
 
-        if (x >= BOARD_WIDTH - 2 * width) {
+        if (x >= Commons.BOARD_WIDTH - 2 * width) {
 
-            x = BOARD_WIDTH - 2 * width;
+            x = Commons.BOARD_WIDTH - 2 * width;
         }
     }
     /**
-     * TODO: TEST
      * Comprueba qué tecla está pulsada y:
      * - Si se pulsa la tecla flecha a la izquierda, guarda el movimiento hacia la izquierda
      * - Si se pulsa la tecla flecha a la derecha, guarda el movimiento hacia la derecha
@@ -66,7 +63,7 @@ public class Player extends Sprite {
 
         if (key == KeyEvent.VK_LEFT) {
 
-            dx = -2;
+            dx = -2;//hemos cambiado 2 a -2
         }
 
         if (key == KeyEvent.VK_RIGHT) {
@@ -75,7 +72,6 @@ public class Player extends Sprite {
         }
     }
     /**
-     * TODO: TEST
      * Comprueba si la tecla e ya no está pulsada:
      * - Si se suelta la tecla flecha a la izquierda, reinicia el desplazamiento de la izquierda a 0
      * - Si se pulsa la tecla flecha a la derecha, reinicia el desplazamiento de la derecha a 0
