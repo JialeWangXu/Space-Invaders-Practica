@@ -4,7 +4,6 @@ import space_invaders.sprites.Alien;
 import space_invaders.sprites.Player;
 import space_invaders.sprites.Shot;
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -21,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-
 
 public class Board extends JPanel {
 
@@ -55,7 +53,6 @@ public class Board extends JPanel {
      * Inicializa el tablero y comienza la partida
      * NO ES NECESARIO PROBAR ESTE MÉTODO MEDIANTE PRUEBAS UNITARIAS
      * */
-
     public Board() {
 
         initBoard();
@@ -79,15 +76,12 @@ public class Board extends JPanel {
     }
 
     /**
-     * TODO: TEST
      * Incializa la partida.
-     *
      * Crea las filas de alienígenas, creando tantos alienígenas como indica la constante Commons.NUMBER_OF_ALIENS_TO_DESTROY.
-     * Coloca los alienígenas en formación,
-     * partiendo para su coordenada X desde la posición Commons.ALIEN_INIT_X y para la coordenada Y desde Commons.ALIEN_INIT_Y.
-     * Para generar la formación en cuadrícula, va sumando 18 a cada una de las coordenadas entre un alienígena y el siguiente.
+     * Coloca los alienígenas en formación, partiendo para su coordenada X desde la posición Commons.ALIEN_INIT_X y para la coordenada Y
+     * desde Commons.ALIEN_INIT_Y. Para generar la formación en cuadrícula, va sumando 18 a cada una de las coordenadas entre un
+     * alienígena y el siguiente.
      * También crea un jugador y el disparo con el que podrá matar a los aliens.
-     *
      * */
     public void gameInit() {
 
@@ -96,7 +90,7 @@ public class Board extends JPanel {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 6; j++) {
 
-                var alien = new Alien(Commons.ALIEN_INIT_X + 18 * j,
+                var alien = new Alien(Commons.ALIEN_INIT_X + 18 * j,//Hemos cambiado ALIEN_INIT_Y a ALIEN_INIT_X
                         Commons.ALIEN_INIT_Y + 18 * i);
                 this.aliens.add(alien);
             }
@@ -234,34 +228,29 @@ public class Board extends JPanel {
                 Commons.BOARD_WIDTH / 2);
     }
     /**
-     * TODO: TEST
      * Actualiza el estado del juego de acuerdo a las teclas pulsadas.
-     * Si se han destruido todos los alienígenas, el juego finaliza la partida.
+     * Si se han destruido todos los alienígenas, es decir, el contador de muertes (deaths) es igual al número de alienígenas,
+     * el juego finaliza la partida.
      * Si no se han destruido, actualiza el estado del juego.
      * */
     public void update() {
 
-        if (deaths == Commons.NUMBER_OF_ALIENS_TO_DESTROY) {
+        if (deaths == Commons.NUMBER_OF_ALIENS_TO_DESTROY) {//Hemos cambiado CHANCE A NUMBER_OF_ALIENS_TO_DESTROY
             inGame = false;
             timer.stop();
             message = "Game won!";
-        } else {
+        }
 
             this.player.act();
             update_shots();
             update_aliens();
             update_bomb();
-        }
+
     }
     /**
-     * TODO: TEST
      * Actualiza el estado de los disparos a los alienígenas.
-     *
-     * Comprueba la posición del alien y del disparo realizado y,
-     * si el disparo acierta al alien
-     * (es decir, las coordenadas X e Y del disparo están entre las coordenadas x+ancho del alienígena, e y+alto del alienígena),
+     * Comprueba la posición del alien y del disparo realizado y, si el disparo acierta al alien (es decir, las coordenadas X e Y del disparo están entre las coordenadas x+ancho del alienígena, e y+alto del alienígena),
      * activa la animación de explosión del alienígena, lo elimina del tablero y aumenta en uno el contador de alienígenas derribados (deaths) en uno.
-     *
      * */
     public void update_shots() {
         if (this.shot.isVisible()) {
@@ -283,7 +272,8 @@ public class Board extends JPanel {
                         var ii = new ImageIcon(explImg);
                         alien.setImage(ii.getImage());
                         alien.setDying(true);
-                        deaths++;
+                        alien.die();  //hemos añadido alien.die()
+                        deaths++;  //hemos cambiado death-- a death++
                         this.shot.die();
                     }
                 }
@@ -292,7 +282,7 @@ public class Board extends JPanel {
             int y = this.shot.getY();
             y -= 4;
 
-                if (y < 0) {
+            if (y < 0) {
                 this.shot.die();
             } else {
                 this.shot.setY(y);
@@ -300,24 +290,20 @@ public class Board extends JPanel {
         }
     }
     /**
-     * TODO: TEST
      * Actualiza los el estado de los aliens,
-     *
-     * Mueve el alienígena hacia la izquierda o a la derecha una posición en función de la dirección indicada
-     * (direction=-1 izquierda, direction=1 derecha).
-     * Si se ha alcanzado el borde del tablero y no se puede mover el alienígena en la dirección indicada,
-     * se cambia de dirección y se mueven todos los alienígenas una posición hacia abajo (Commons.GO_DOWN).
+     * Mueve el alienígena hacia la izquierda o a la derecha una posición en función de la dirección indicada (direction=-1 izquierda, direction=1 derecha).
+     * Si se ha alcanzado el borde del tablero y no se puede mover el alienígena en la dirección indicada, se cambia de dirección y se mueven todos los alienígenas una posición hacia abajo (Commons.GO_DOWN).
      * Si los alienígenas alcanzan el borde inferior del tablero, el juego termina y se nos muestra por pantalla el mensaje "Invasion!"
-     *
-      */
+     * */
     public void update_aliens(){
         for (Alien alien : this.aliens) {
 
             int x = alien.getX();
 
-            if (x >= Commons.BOARD_WIDTH - Commons.BORDER_RIGHT && direction != -1) {
 
-                direction = -1;
+            if (x >= Commons.BOARD_WIDTH - Commons.BORDER_RIGHT && direction != -1) { //hemos cambiado <= a >=
+
+                direction = -1;//hemos cambiado el valor 0 a -1
 
                 Iterator<Alien> i1 = this.aliens.iterator();
 
@@ -337,7 +323,7 @@ public class Board extends JPanel {
                 while (i2.hasNext()) {
 
                     Alien a = i2.next();
-                    a.setY(a.getY() + Commons.GO_DOWN);
+                    a.setY(a.getY() + Commons.GO_DOWN); //hemos cambiado setX a setY
                 }
             }
         }
@@ -364,16 +350,13 @@ public class Board extends JPanel {
 
     }
     /**
-     * TODO: TEST
      * Actualiza las bombas de los alenígenas.
-     *
-     * Genera una bomba por alienígena. Si una bomba ha sido destruida, o no ha sido creada por primera vez,
-     * la crea asignándole las coordenadas actuales del alienígena, y establece su estado "destroyed" a falso.
+     * Genera una bomba por alienígena. Si una bomba ha sido destruida, o no ha sido creada por primera vez, la crea asignándole
+     * las coordenadas actuales del alienígena, y establece su estado "destroyed" a falso.
      * Si la bomba ha llegado al suelo (Commons.GROUND-Commons.BOMB_HEIGHT), se destruye y desaparece (cambia destroyed a true).
      * Si el jugador ha sido alcanzado por una bomba, el jugador cambiará su estado "setDying" a verdadero, y su imagen se cambiará por la animación de explosión
      * Si no sucede ninguna de las condiciones anteriores, la bomba bajará verticalmente una posición.
-     *
-      */
+     * */
     public void update_bomb(){
         var generator = new Random();
 
@@ -403,7 +386,7 @@ public class Board extends JPanel {
 
                     var ii = new ImageIcon(explImg);
                     this.player.setImage(ii.getImage());
-                    this.player.setDying(true);
+                    this.player.setDying(true); //hemos cambiado false a true
                     bomb.setDestroyed(true);
                 }
             }
@@ -414,7 +397,7 @@ public class Board extends JPanel {
 
                 if (bomb.getY() >= Commons.GROUND - Commons.BOMB_HEIGHT) {
 
-                    bomb.setDestroyed(true);
+                    bomb.setDestroyed(true); //hemos cambiado false a true
                 }
             }
         }
@@ -536,6 +519,4 @@ public class Board extends JPanel {
     public void setTimer(Timer timer) {
         this.timer = timer;
     }
-
-
 }
