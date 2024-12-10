@@ -115,7 +115,7 @@ public class Board extends JPanel {
 
             if (alien.isDying()) {
 
-                alien.setDying(false);
+                alien.die(); // cambiado para el correcto funcionamiento
             }
         }
     }
@@ -272,7 +272,6 @@ public class Board extends JPanel {
                         var ii = new ImageIcon(explImg);
                         alien.setImage(ii.getImage());
                         alien.setDying(true);
-                        alien.die();  //hemos añadido alien.die()
                         deaths++;  //hemos cambiado death-- a death++
                         this.shot.die();
                     }
