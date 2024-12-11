@@ -35,7 +35,7 @@ public class BoardTest {
                             "caso 1, alienígenas generado erróneamente por insuficiente numero total de alienígenas: " +
                                     "\nsalida esperada de numero de alien = distinto que 24, salida final de numero de alien: " + board.getAliens().size());
 
-                    System.out.println("caso 1, alienígenas generado erróneamente por insuficiente numero total de alienígenas: " +
+                    System.out.println("caso 1, alienígenas generado Correctamente por numero total de alienígenas es: " +
                                     "\nsalida esperada de numero de alien = distinto que 24, salida final de numero de alien: " + board.getAliens().size());
 
                 },() -> {
@@ -44,7 +44,7 @@ public class BoardTest {
                                     "\nsalida esperada de X: distinto que 150,  salida final de X: "+ board.getAliens().get(0).getX()
                                     +"\nsalida esperada de Y: distinto que 5,  salida final de Y:"+ board.getAliens().get(0).getY());
 
-                    System.out.println("caso 2, alienígenas generado erróneamente por instanciar en la coordenada errónea: " +
+                    System.out.println("caso 2, alienígenas generado Correctamente por instanciar en la coordenada correcta: " +
                                     "\nsalida esperada de X: distinto que 150,  salida final de X: "+ board.getAliens().get(0).getX()
                                     +"\nsalida esperada de Y: distinto que 5,  salida final de Y:"+ board.getAliens().get(0).getY());
 
@@ -53,7 +53,7 @@ public class BoardTest {
                             "caso 3 alienígenas generado correctamente: \nsalida esperada de X: 150,  salida final de X: "+ board.getAliens().get(0).getX()
                                     +"\nsalida esperada de Y: 5,  salida final de Y:"+ board.getAliens().get(0).getY()
                                     +"\nsalida esperada de numero de alien = 24,  salida final de numero de alien: " + board.getAliens().size());
-                    System.out.println("caso 1 : \nsalida esperada de X: 150,  salida final de X: "+ board.getAliens().get(0).getX()
+                    System.out.println("caso 3 : \nsalida esperada de X: 150,  salida final de X: "+ board.getAliens().get(0).getX()
                             +"\nsalida esperada de Y: 5,  salida final de Y:"+ board.getAliens().get(0).getY()
                             +"\nsalida esperada de numero de alien = distinto que 24,  salida final de numero de alien: " + board.getAliens().size());
 
@@ -66,7 +66,6 @@ public class BoardTest {
     @Test
     public void update(){
         board.setInGame(true);
-        System.out.println(board.getDeaths());
         assertAll("Pruebas de clase de equivalencia del método update: ",
                 () -> {
                     board.setDeaths(24);
@@ -80,7 +79,7 @@ public class BoardTest {
                     board.setDeaths(3);
                     board.update();
                     assertTrue( board.isInGame(), "Caso 2: \nsalida esperada : True \nsalida final: " + board.isInGame());
-                    System.out.println("Caso 2: \nsalida esperada :  \nsalida final: " + board.isInGame());
+                    System.out.println("Caso 2: \nsalida esperada : True \nsalida final: " + board.isInGame());
                 }
         );
 
@@ -177,6 +176,7 @@ public class BoardTest {
         board.gameInit();
         assertAll("Pruebas de clase de equivalencia del método update_aliens: ",
                 () -> {
+                    System.out.println("Choca con el borde izquierdo, baja un nivel de Y 5->20");
                     board.setDirection(1);
                     board.getAliens().get(8).setX(330);
                     board.getAliens().get(8).setY(5);
@@ -185,7 +185,8 @@ public class BoardTest {
                     System.out.println("Caso 1: \nsalida esperada : 20 \nsalida final: " + board.getAliens().get(8).getY());
 
                 }, () -> {
-
+                    System.out.println();
+                    System.out.println("Choca con el borde derecho, baja un nivel de Y 5->20");
                     board.setDirection(-1);
                     board.getAliens().get(9).setX(2);
                     board.getAliens().get(9).setY(5);
@@ -193,16 +194,9 @@ public class BoardTest {
                     assertEquals(20, board.getAliens().get(9).getY(), "Caso 2: \nsalida esperada : 20 \nsalida final: " + board.getAliens().get(9).getY());
                     System.out.println("Caso 2: \nsalida esperada : 20 \nsalida final: " + board.getAliens().get(9).getY());
 
-                }/**, () -> {
-                    board.setDirection(1);
-                    board.getAliens().get(0).setX(150);
-                    board.getAliens().get(0).setY(35);
-                    board.update_aliens();
-                    assertEquals(5, board.getAliens().get(0).getY(), "Caso 3: \nsalida esperada : 5 \nsalida final: " + board.getAliens().get(0).getY());
-                    System.out.println("Caso 3: \nsalida esperada : 5 \nsalida final: " + board.getAliens().get(0).getY());
-
-                }**/, () -> {
-
+                }, () -> {
+                    System.out.println();
+                    System.out.println("Algún alien llega al suelo");
                     board.setDirection(1);
                     board.getAliens().get(1).setX(150);
                     board.getAliens().get(1).setY(280);
