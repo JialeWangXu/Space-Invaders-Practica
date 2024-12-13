@@ -36,7 +36,7 @@ public class MockTest {
         //para el método update_aliens()
         board.setDirection(1);
         List<Alien> aliens = new ArrayList<>();
-        aliens.add(new Alien(330,5));
+        aliens.add(new Alien(328,5));
         board.setAliens(aliens);
 
         //para el método update_bomb()

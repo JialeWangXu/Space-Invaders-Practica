@@ -100,10 +100,10 @@ public class Board extends JPanel {
         "\nPosición esperada de primer alien: X=150   Y=5" +
         "\nPosición final de primer alien: X=" + aliens.getFirst().getX() + " Y=" + aliens.getFirst().getY() +
         "\n longitud de lista de alien final = " + aliens.size());
-        System.out.println("---------------------------");
+        System.out.println("---------------------------");*/
 
 
-        System.out.println("Antes de Instanciar el player: player = null");*/
+        //System.out.println("Antes de Instanciar el player: player = null");
         this.player = new Player();
         /*System.out.println("Después de instanciar el player:" +
                 "\nPosición esperada de player: X = 179   Y = 280" +
@@ -274,7 +274,7 @@ public class Board extends JPanel {
             System.out.println("Antes de empezar la partida la posicion inicial del alien es: "+
                     "\nX: "+this.aliens.getFirst().getX() + "\nY: " + this.aliens.getFirst().getY());*/
             update_aliens();
-           /*System.out.println("salida esperada X  == 329   salida final Y: " + this.aliens.get(0).getX()
+           /*System.out.println("salida esperada X  == 327   salida final Y: " + this.aliens.get(0).getX()
             + "\nsalida esperada Y == 20   salida final Y: " + this.aliens.get(0).getY())  ;
            System.out.println("---------------------------");
 */
@@ -380,11 +380,11 @@ public class Board extends JPanel {
                     inGame = false;
                     message = "Invasion!";
                 }
-                System.out.println("Antes de mover horizontalmente la posición de alien: alien posición X=" +aliens.getFirst().getX());
+                //System.out.println("Antes de mover horizontalmente la posición de alien: alien posición X=" +aliens.getFirst().getX());
                 alien.act(direction);
-                System.out.println("Después de mover horizontalmente la posición de alien:" +
+                /**System.out.println("Después de mover horizontalmente la posición de alien:" +
                         "\nAlien posición esperada X = 149    Alien posición final X = " + aliens.getFirst().getX());
-                System.out.println("---------------------------");
+                System.out.println("---------------------------");**/
 
             }
         }
