@@ -14,8 +14,16 @@ public class Alien extends Sprite {
      * @param y coordenada Y de la posición del nuevo alien
      * */
     public Alien(int x, int y) {
-
+       // System.out.println("Antes de llamar al método initAlien: alien no instanciada");
         initAlien(x, y);
+       /* System.out.println("Instancia alien en posición indicada:" +
+        "\n Alien posición esperada: X = " + x + "  Y = " + y +
+        "\n Alien posición final: X = " + this.x + "  Y = " + this.y
+        );*/
+    }
+
+    public Alien(){
+
     }
     /**
      * Inicializa un nuevo alien y le asigna la imagen correspondiente en la interfaz
@@ -25,7 +33,7 @@ public class Alien extends Sprite {
      * Por ejemplo, si la coordenada X indicada supera el margen de la pantalla, se asignará a X el valor máximo posible, es decir, el ancho de la pantalla.
      * Si se introduce alguna coordenada negativa, se reemplazará por 0.
      * */
-    private void initAlien(int x, int y) {
+    public void initAlien(int x, int y) {
         //hemos modificado el orden de condición separado la comprobación de los límites de X e Y
         this.x = x;
         this.y = y;
@@ -42,7 +50,11 @@ public class Alien extends Sprite {
             this.y=0;
         }
 
+        //System.out.println("Antes de ejecutar el constructor de bomba: Bomba no instanciada");
         bomb = new Bomb(x, y);
+        /*System.out.println("Instanciar bomba en la posición de alien: "
+        + "\n posicion alien: X = " + x + " y = " + y
+        + "\n posición bomb: X = " + this.bomb.getX() + " y = " + this.bomb.getY());*/
 
         var alienImg = "src/main/resources/images/alien.png";
         var ii = new ImageIcon(alienImg);
@@ -85,7 +97,10 @@ public class Alien extends Sprite {
 
         public Bomb(int x, int y) {
 
+            //System.out.println("Antes de instanciar la bomba por el alien: No hay bomba instanciada ");
             initBomb(x, y);
+             //System.out.println("posición esperada de la Bomba instanciada: X = " + x + ", Y = " + y
+           // + "\nposición final de la bomba instanciada: X = " + this.x + ", Y = " + this.y);
         }
 
         /**

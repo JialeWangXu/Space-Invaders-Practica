@@ -10,8 +10,13 @@ public class Player extends Sprite {
     private int width;
 
     public Player() {
-
+        //System.out.println("Antes de llamar al método initPlayer: player no instanciada");
         initPlayer();
+        /*
+        System.out.println("Instancia player en posición indicada:" +
+        "\n Player posición esperada: X = 179   Y = 280" +
+        "\n Player posición final X = " + this.x + "  Y = " + this.y);
+         */
     }
     /**
      * Crea un nuevo jugador, le asigna su imagen en la interfaz y lo ubica en el centro de la pantalla

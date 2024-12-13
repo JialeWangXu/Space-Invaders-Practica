@@ -74,7 +74,8 @@ public class PlayerTest {
         assertAll("Pruebas de clase de equivalencia del método keyReleased: ",
                 () -> {
                     //TRUE
-                    player.setX(270);
+                    player.setX(268);
+                    player.setDx(2);
                     player.act();
                     assertEquals(270,player.getX(),"\nCaso 1 \nsalida esperada de X: 270 \nsalida final: " + player.getX());
                     System.out.println("\nCaso 1 \nsalida esperada de X: 270 \nsalida final: " + player.getX());
@@ -82,12 +83,14 @@ public class PlayerTest {
                 () -> {
 
                     player.setX(1);
+                    player.setDx(2);
                     player.act();
-                    assertEquals(2,player.getX(),"\nCaso 2 \nsalida esperada de X: 2 \nsalida final: " + player.getX());
+                    assertEquals(3,player.getX(),"\nCaso 2 \nsalida esperada de X: 2 \nsalida final: " + player.getX());
                     System.out.println("\nCaso 2 \nsalida esperada de X: 0 \nsalida final: " + player.getX());
                 },
                 () -> {
-                    player.setX(2);
+                    player.setX(0);
+                    player.setDx(-2);
                     player.act();
                     assertEquals(2,player.getX(),"\nCaso 3 \nsalida esperada de X: 2 \nsalida final: " + player.getX());
                     System.out.println("\nCaso 3 \nsalida esperada de X: 0 \nsalida final: " + player.getX());
