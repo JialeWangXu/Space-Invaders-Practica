@@ -74,50 +74,54 @@ public class PlayerTest {
         assertAll("Pruebas de clase de equivalencia del método keyReleased: ",
                 () -> {
                     //TRUE
-                    player.setX(268);
-                    player.setDx(2);
+                    player.setX(3);
+                    player.setDx(-2);
                     player.act();
-                    assertEquals(270,player.getX(),"\nCaso 1 \nsalida esperada de X: 270 \nsalida final: " + player.getX());
-                    System.out.println("\nCaso 1 \nsalida esperada de X: 270 \nsalida final: " + player.getX());
+                    assertEquals(2,player.getX(),"\nCaso 1 \nsalida esperada de X: 2 \nsalida final: " + player.getX());
+                    System.out.println("\nCaso 1 \nsalida esperada de X: 2 \nsalida final: " + player.getX());
                 },
                 () -> {
 
-                    player.setX(1);
-                    player.setDx(2);
-                    player.act();
-                    assertEquals(3,player.getX(),"\nCaso 2 \nsalida esperada de X: 2 \nsalida final: " + player.getX());
-                    System.out.println("\nCaso 2 \nsalida esperada de X: 0 \nsalida final: " + player.getX());
-                },
-                () -> {
-                    player.setX(0);
+                    player.setX(4);
                     player.setDx(-2);
                     player.act();
-                    assertEquals(2,player.getX(),"\nCaso 3 \nsalida esperada de X: 2 \nsalida final: " + player.getX());
-                    System.out.println("\nCaso 3 \nsalida esperada de X: 0 \nsalida final: " + player.getX());
+                    assertEquals(2,player.getX(),"\nCaso 2 \nsalida esperada de X: 2 \nsalida final: " + player.getX());
+                    System.out.println("\nCaso 2 \nsalida esperada de X: 2 \nsalida final: " + player.getX());
                 },
                 () -> {
-                    player.setX(3);
+                    player.setX(5);
+                    player.setDx(-2);
                     player.act();
-                    assertEquals(3,player.getX(),"\nCaso 4 \nsalida esperada de X: 3 \nsalida final: " + player.getX());
-                    System.out.println("\nCaso 4 \nsalida esperada de X: 1 \nsalida final: " + player.getX());
+                    assertEquals(3,player.getX(),"\nCaso 3 \nsalida esperada de X: 3 \nsalida final: " + player.getX());
+                    System.out.println("\nCaso 3 \nsalida esperada de X: 3 \nsalida final: " + player.getX());
+                },
+                () -> {
+                    player.setX(272);
+                    player.setDx(-2);
+                    player.act();
+                    assertEquals(270,player.getX(),"\nCaso 4 \nsalida esperada de X: 270 \nsalida final: " + player.getX());
+                    System.out.println("\nCaso 4 \nsalida esperada de X: 270 \nsalida final: " + player.getX());
+                },
+                () -> {
+                    player.setX(325);
+                    player.setDx(2);
+                    player.act();
+                    assertEquals(327,player.getX(),"\nCaso 5 \nsalida esperada de X: 327 \nsalida final: " + player.getX());
+                    System.out.println("\nCaso 5 \nsalida esperada de X: 327 \nsalida final: " + player.getX());
+                },
+                () -> {
+                    player.setX(326);
+                    player.setDx(2);
+                    player.act();
+                    assertEquals(328,player.getX(),"\nCaso 6 \nsalida esperada de X: 328 \nsalida final: " + player.getX());
+                    System.out.println("\nCaso 6 \nsalida esperada de X: 328 \nsalida final: " + player.getX());
                 },
                 () -> {
                     player.setX(327);
-                    player.act();
-                    assertEquals(327,player.getX(),"\nCaso 5 \nsalida esperada de X: 327 \nsalida final: " + player.getX());
-                    System.out.println("\nCaso 5 \nsalida esperada de X: 342 \nsalida final: " + player.getX());
-                },
-                () -> {
-                    player.setX(328);
-                    player.act();
-                    assertEquals(328,player.getX(),"\nCaso 6 \nsalida esperada de X: 328 \nsalida final: " + player.getX());
-                    System.out.println("\nCaso 6 \nsalida esperada de X: 343 \nsalida final: " + player.getX());
-                },
-                () -> {
-                    player.setX(329);
+                    player.setDx(2);
                     player.act();
                     assertEquals(328,player.getX(),"\nCaso 2 \nsalida esperada de X: 328 \nsalida final: " + player.getX());
-                    System.out.println("\nCaso 7 \nsalida esperada de X: 343 \nsalida final: " + player.getX());
+                    System.out.println("\nCaso 7 \nsalida esperada de X: 328 \nsalida final: " + player.getX());
                 }
 
         );
