@@ -267,21 +267,21 @@ public class Board extends JPanel {
 
            // System.out.println("Antes de empezar la partida la posicion inicial del shot es: "+ this.shot.getY());
             update_shots();
-            /*System.out.println("\nsalida esperada: Y == 1 \nsalida final: " + this.shot.getY());
+            /*System.out.println("\nDespues de ejecutar update_shots(): salida esperada: Y == 1 \nsalida final: " + this.shot.getY());
             System.out.println("---------------------------");*/
 /*
 
             System.out.println("Antes de empezar la partida la posicion inicial del alien es: "+
                     "\nX: "+this.aliens.getFirst().getX() + "\nY: " + this.aliens.getFirst().getY());*/
             update_aliens();
-           /*System.out.println("salida esperada X  == 327   salida final Y: " + this.aliens.get(0).getX()
+           /*System.out.println("\nDespues de ejecutar update_aliens():salida esperada X  == 327   salida final X: " + this.aliens.get(0).getX()
             + "\nsalida esperada Y == 20   salida final Y: " + this.aliens.get(0).getY())  ;
-           System.out.println("---------------------------");
-*/
-           /* System.out.println("Antes de empezar la partida la posicion inicial del bomb es: " +
+           System.out.println("---------------------------");*/
+
+            /*System.out.println("Antes de empezar la partida la posicion inicial del bomb es: " +
                     "\nX: "+aliens.getFirst().getBomb().getX() + "\nY: " + aliens.getFirst().getBomb().getY());*/
             update_bomb();
-            /*System.out.println("salida esperada X == 200  salida final X: " + aliens.getFirst().getBomb().getX()+
+            /*System.out.println("\nDespues de ejecutar update_bomb():salida esperada X == 200  salida final X: " + aliens.getFirst().getBomb().getX()+
             "\n salida esperada Y == 101  salida final Y: " + aliens.getFirst().getBomb().getY());
             System.out.println("---------------------------");*/
 
@@ -380,11 +380,11 @@ public class Board extends JPanel {
                     inGame = false;
                     message = "Invasion!";
                 }
-                //System.out.println("Antes de mover horizontalmente la posición de alien: alien posición X=" +aliens.getFirst().getX());
+                //System.out.println("\nAntes de mover horizontalmente por el metodo act():posición X=" +aliens.getFirst().getX());
                 alien.act(direction);
-                /**System.out.println("Después de mover horizontalmente la posición de alien:" +
-                        "\nAlien posición esperada X = 149    Alien posición final X = " + aliens.getFirst().getX());
-                System.out.println("---------------------------");**/
+                /*System.out.println("\nDespués de mover horizontalmente por el metodo act():" +
+                        "\nAlien posición esperada X = 327    Alien posición final X = " + aliens.getFirst().getX());
+                System.out.println("---------------------------");*/
 
             }
         }
