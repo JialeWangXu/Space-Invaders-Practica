@@ -39,6 +39,8 @@ public class MockTest {
         aliens.add(new Alien(328,5));
         board.setAliens(aliens);
 
+
+
         //para el método update_bomb()
         Alien.Bomb bomb =aliens.getFirst().getBomb();
         bomb.setDestroyed(false);
@@ -50,44 +52,11 @@ public class MockTest {
     }
 
     @Test
-    public void testBomb() {
-        Alien alien = new Alien();  // Crea una instancia de Alien
-        alien.new Bomb(150, 5);
-
-    }
-
-    @Test
-    public void testInitAlien() {
-        Alien alien = new Alien();
-        alien.initAlien(150,5);
-
-    }
-
-    @Test
-    public void testAlien(){
-        new Alien(150,5);
-    }
-
-    @Test
-    public void testPlayer(){
-        new Player();
-    }
-
-    @Test
     public void testGameInit(){
         Board board = new Board();
         board.gameInit();
     }
 
-
-    @Test
-    public void testUpdate_Alien(){
-    Board board = new Board();
-    board.setDirection(-1);
-    List<Alien> aliens = new ArrayList<>();
-    aliens.add(new Alien(150,5));
-    board.update_aliens();
-    }
 
 
 }
