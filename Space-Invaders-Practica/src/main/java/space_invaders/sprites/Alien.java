@@ -22,10 +22,6 @@ public class Alien extends Sprite {
         "\n Alien posición final: X = " + this.x + "  Y = " + this.y);
         System.out.println("------------Devolver el control al constructor de Alien---------------");*/
     }
-
-    public Alien(){
-
-    }
     /**
      * Inicializa un nuevo alien y le asigna la imagen correspondiente en la interfaz
      * @param x coordenada X de la posición del nuevo alien

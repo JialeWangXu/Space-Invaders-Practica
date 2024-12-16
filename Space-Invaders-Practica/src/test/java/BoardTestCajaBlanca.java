@@ -59,8 +59,8 @@ public class BoardTestCajaBlanca {
                         board.getAliens().get(2).setX(330);
                         board.getAliens().get(2).setY(5);
                         board.update_aliens();
-                        assertEquals(5, board.getAliens().get(8).getY(), "Caso 1: \nsalida esperada : 5 \nsalida final: " + board.getAliens().get(8).getY());
-                        System.out.println("Caso 5: \nsalida esperada : 5 \nsalida final: " + board.getAliens().get(8).getY());
+                        assertEquals(65, board.getAliens().get(8).getY(), "Caso 5: \nsalida esperada : 65 \nsalida final: " + board.getAliens().get(8).getY());
+                        System.out.println("Caso 5: \nsalida esperada : 65 \nsalida final: " + board.getAliens().get(8).getY());
 
                     }, () -> {
                         // R11
@@ -95,7 +95,7 @@ public class BoardTestCajaBlanca {
                         board.getAliens().get(6).getBomb().setDestroyed(false);
                         board.update_bomb();
 
-                        assertFalse(board.getPlayer().isDying(), "Caso 2: \nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
+                        assertTrue(board.getPlayer().isDying(), "Caso 2: \nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
                         System.out.println("Caso 2: player died\nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
 
                     },() -> {
@@ -105,8 +105,8 @@ public class BoardTestCajaBlanca {
                         board.getAliens().get(2).getBomb().setDestroyed(false);
                         board.update_bomb();
 
-                        assertEquals(281, board.getAliens().get(2).getBomb().getY(),"Caso 3: \nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
-                        System.out.println("Caso 3: player died\nsalida esperada : true \nsalida final: " + board.getAliens().get(2).getBomb().getY());
+                        assertEquals(281, board.getAliens().get(2).getBomb().getY(),"Caso 3: \nsalida esperada : Y=281 \nsalida final: " + board.getPlayer().isDying());
+                        System.out.println("Caso 3: Bajar bomba\nsalida esperada : Y=281 \nsalida final: " + board.getAliens().get(2).getBomb().getY());
                     },() -> {
 
                         board.getAliens().get(3).getBomb().setX(100);
@@ -114,8 +114,8 @@ public class BoardTestCajaBlanca {
                         board.getAliens().get(3).getBomb().setDestroyed(false);
                         board.update_bomb();
 
-                        assertFalse(board.getAliens().get(3).getBomb().isDestroyed(),"Caso 4: \nsalida esperada : true \nsalida final: " + board.getPlayer().isDying());
-                        System.out.println("Caso 4: player died\nsalida esperada : true \nsalida final: " + board.getAliens().get(3).getBomb().isDestroyed());
+                        assertTrue(board.getAliens().get(3).getBomb().isDestroyed(),"Caso 4: \nsalida esperada : true \nsalida final: " + board.getAliens().get(3).getBomb().isDestroyed());
+                        System.out.println("Caso 4: Bomba llega al suelo y destruye\nsalida esperada : true \nsalida final: " + board.getAliens().get(3).getBomb().isDestroyed());
                     }
             );
         }
