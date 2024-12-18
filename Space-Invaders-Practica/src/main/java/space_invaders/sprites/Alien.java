@@ -35,7 +35,7 @@ public class Alien extends Sprite {
         this.x = x;
         this.y = y;
 
-        if (x> Commons.BOARD_WIDTH){
+        /*if (x> Commons.BOARD_WIDTH){
             this.x = Commons.BOARD_WIDTH;
         } else if (x<0){
             this.x = 0;
@@ -45,7 +45,9 @@ public class Alien extends Sprite {
             this.y = Commons.BOARD_HEIGHT;
         } else if (y<0){
             this.y=0;
-        }
+        }*/
+        //Comentamos estas comprobaciones porque en realidad son redudantes.
+
         /*System.out.println("------------Pasar el control al constructor de Bomb---------------");
         System.out.println("Antes de ejecutar el constructor de bomba: Bomba no instanciada");*/
         bomb = new Bomb(x, y);
@@ -115,7 +117,7 @@ public class Alien extends Sprite {
             //hemos modificado el orden de condición separado la comprobación de los límites de X e Y
             this.x = x;
             this.y = y;
-            if (x>= Commons.BOARD_WIDTH){
+            /*if (x>= Commons.BOARD_WIDTH){
                 this.x = Commons.BOARD_WIDTH;
             }else if (x<0){
                 this.x = 0;
@@ -125,7 +127,8 @@ public class Alien extends Sprite {
                 this.y = Commons.BOARD_HEIGHT;
             }else if (y<0){
                 this.y = 0;
-            }
+            }*/
+            //Comentamos estas comprobaciones porque en realidad son redudantes.
 
             var bombImg = "src/main/resources/images/bomb.png";
             var ii = new ImageIcon(bombImg);
